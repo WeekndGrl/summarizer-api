@@ -5,7 +5,13 @@ import uvicorn
 import os
 from app.summarizer import summarize_content, fetch_web_content
 
+
 app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "🚀 Summarizer API is up and running!"}
+
 
 app.add_middleware(
     CORSMiddleware,
