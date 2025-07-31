@@ -1,4 +1,4 @@
-# utils/summarizer.py
+# app/main.py
 
 import os
 import re
@@ -10,10 +10,9 @@ from dotenv import load_dotenv
 import requests
 from bs4 import BeautifulSoup
 import sys
-from nlp import summarize_content, fetch_web_content
 
 # Load .env
-dotenv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "locker.env"))
+dotenv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../locker.env"))
 load_dotenv(dotenv_path, override=True)
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
