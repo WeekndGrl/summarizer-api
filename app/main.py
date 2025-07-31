@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 import uvicorn
 import os
-from summarizer import summarize_content, fetch_web_content
+from app.summarizer import summarize_content, fetch_web_content
 
 app = FastAPI()
 
