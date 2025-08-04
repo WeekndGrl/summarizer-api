@@ -1,4 +1,4 @@
-from fastapi import UploadFile
+from fastapi import UploadFile, File
 from typing import Optional
 from PyPDF2 import PdfReader
 from PIL import Image
@@ -96,8 +96,11 @@ def summarize_content(url: str, content: str, keywords: list[str] = None) -> str
     return response.choices[0].message.content.strip()
 
 async def process_and_summarize(
-    file: Optional[UploadFile], url: Optional[str], content: Optional[str], keywords: Optional[str]
+    file: Optional[UploadFile] = File(None), url: Optional[str] = None, content: Optional[str] = None, keywords: Optional[str] = ""
 ):
+    if isinstance(file, str):
+        file = None
+
     extracted = ""
     kwords = [k.strip() for k in keywords.split(",") if k.strip()] if keywords else []
 
